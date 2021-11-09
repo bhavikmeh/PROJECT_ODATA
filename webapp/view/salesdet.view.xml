@@ -1,0 +1,40 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="bh.controller.salesdet"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Sales Details" showNavButton="true" navButtonPress="onBack">
+		<Table id="idSales" items="{ToLineItems}" growing="true" growingDirection="Downwards" growingThreshold="20" growingScrollToLoad="true"
+		mode="SingleSelectLeft">
+			<headerToolbar>
+				<OverflowToolbar id="otbSubheader">
+					<ToolbarSpacer/>
+					<Button id="editButton" text="Edit" type="Transparent" press="onEdit"/>
+					<!--<Button id="saveButton" text="Save" type="Transparent" press="onSave" visible="false"/>-->
+					<!--<Button id="cancelButton" text="Cancel" type="Transparent" press="onCancel" visible="false"/>-->
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<Text text="Product"/>
+				</Column>
+				<Column>
+					<Text text="Quantity"/>
+				</Column>
+				<Column>
+					<Text text="Unit"/>
+				</Column>
+				<Column>
+					<Text text="Gross Amount"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ObjectIdentifier title="{ProductID}" text="{Note}"></ObjectIdentifier>
+						<Input value="{Quantity}"/>
+						<Input value="{QuantityUnit}"/>
+						<Text text="{GrossAmount} {CurrencyCode}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Page>
+</mvc:View>

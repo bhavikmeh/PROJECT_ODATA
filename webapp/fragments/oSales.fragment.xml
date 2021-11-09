@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<ColumnListItem id="oSalesDet">
+		<cells>
+			<ObjectIdentifier title="{SalesOrderID}" titleActive="true" titlePress="titleClicked"/>
+			<ObjectIdentifier
+			   title="{ parts:[{path: 'GrossAmount'},{path:'CurrencyCode'}], type:'sap.ui.model.type.Currency', formatOptions:{showMeasure:true} }"/>
+			   
+			<Text text="{LifecycleStatusDescription}"/>
+			<Text text="{BillingStatusDescription}" />
+		</cells>
+	</ColumnListItem>
+</core:FragmentDefinition>

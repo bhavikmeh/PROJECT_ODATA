@@ -1,0 +1,34 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormDisplay354" editable="true" layout="ResponsiveGridLayout" title="Address" labelSpanXL="3" labelSpanL="3"
+			labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"
+			columnsL="1" columnsM="1" singleContainerFullSize="false">
+			<f:content>
+				<Label text="Sales Order"/>
+				<Select id="idSales" change="onChange" forceSelection="false" selectedKey="{selData>/soId}"
+			         	items="{ path: 'ToSalesOrders' }">
+					<items>	<core:Item text="{Note}" key="{SalesOrderID}"/>	</items>
+				</Select>
+				<Label text="Items"/>
+				<Select id="idItems" forceSelection="false" change="onProdChg" selectedKey="{selData>/itmSel}" 
+				        items="{selData>/items}">
+					<items>	<core:Item text="{selData>ProductID}" key="{selData>ItemPosition}"/></items>
+				</Select>
+				<Label text="BP from OData"/>
+				<Text text="{ToContacts/FirstName}"/>
+				<Label text="Business Partner Id"/>
+				<Input value="{selData>/contact/BusinessPartnerID}"/>
+				<Label text="Company Name"/>
+				<Input value="{selData>/contact/CompanyName}"/>
+				<Label text="Web Address"/>
+				<Input value="{selData>/contact/WebAddress}"/>
+				<Label text="Email Address"/>
+				<Input value="{selData>/contact/EmailAddress}"/>
+				<Label text="Phone Number"/>
+				<Input value="{selData>/contact/PhoneNumber}"/>
+				<Label text="Fax Number"/>
+				<Input value="{selData>/contact/FaxNumber}"/>
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,21 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="bh.controller.mas" xmlns:core="sap.ui.core">
+	<Page title="Product List">
+		<SearchField search="onSearch" liveChange="onSearch" placeholder="Enter Product Number"/>
+		<List id="idMaster"
+			items="{ path: '/BusinessPartnerSet', sorter: { path: 'BusinessPartnerID', descending: false }, 
+			parameters: { select : 'CompanyName,BusinessPartnerID,BusinessPartnerRole, Address'}}"
+			mode="SingleSelectMaster" selectionChange="onPress">
+			<ObjectListItem title="{BusinessPartnerID}" intro="{CompanyName}">
+				<!--number="{ parts:[{path: 'price'},{path:'unit'}], type:'sap.ui.model.type.Currency', formatOptions:{showMeasure:false} }" numberUnit="{unit}">-->
+				<ObjectAttribute title="{Address/Building}" text= "{Address/Street}"/>
+				<ObjectAttribute text="{Address/City}"/>
+				<ObjectAttribute text="{Address/Country}"/>
+				<firstStatus>
+				<ObjectStatus text="{=${BusinessPartnerRole} === '01' ? 'Buyer' : 'Supplier'  }"
+				              state="{=${BusinessPartnerRole} === '01' ? 'Success' : 'Error'  }"
+						     />
+				</firstStatus>
+			</ObjectListItem>
+		</List>
+	</Page>
+</mvc:View>

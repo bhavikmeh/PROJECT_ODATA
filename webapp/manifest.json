@@ -1,0 +1,134 @@
+{
+	"_version": "1.9.0",
+	"sap.app": {
+		"id": "bh",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/iwbep/GWSAMPLE_BASIC/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "bh.view.app",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.42.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ushell": {},
+				"sap.collaboration": {
+					"lazy": true
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "bh.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true
+			}
+		},
+
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "bh.view",
+				"controlId": "idSplitApp",
+				"controlAggregation": "detailPages",
+				"viewLevel": 1
+			},
+			"routes": [{
+					"pattern": "",
+					"name": "master",
+					"target": [
+						"master",
+						"object"
+					]
+				},
+
+				{
+					"pattern": "BusinessPartnerSet/{objectId}",
+					"name": "pddet",
+					"target": [
+						"master",
+						"details"
+					]
+				}, {
+					"pattern": "SalesOrderSet/{objectId}/{sId}",
+					"name": "sddet",
+					"target": [
+						"master",
+						"sales"
+					]
+				}
+
+			],
+			"targets": {
+				"master": {
+					"viewName": "mas",
+					"viewLevel": 1,
+					"viewId": "idMaster",
+					"controlAggregation": "masterPages"
+				},
+				"object": {
+					"viewName": "empdet",
+					"viewId": "idEmpDet",
+					"viewLevel": 1,
+					"controlAggregation": "detailPages"
+				},
+				"details": {
+					"viewName": "details",
+					"viewId": "idDetails",
+					"viewLevel": 2,
+					"controlAggregation": "detailPages"
+				},
+				"sales": {
+					"viewName": "salesdet",
+					"viewId": "idSalesdet",
+					"viewLevel": 3,
+					"controlAggregation": "detailPages"
+				}
+			}
+		}
+	}
+}

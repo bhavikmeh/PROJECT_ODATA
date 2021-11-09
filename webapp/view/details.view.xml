@@ -1,0 +1,18 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="bh.controller.details"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Products">
+		<IconTabBar>
+			<items>
+				<IconTabFilter icon="sap-icon://notes" text="Bind Element Expand">
+					<core:Fragment fragmentName="bh/fragments/salesexpand" type="XML"/>
+				</IconTabFilter>
+				<IconTabFilter icon="sap-icon://hint" text="Input List View">
+					<core:Fragment fragmentName="bh/fragments/selectcontrol" type="XML"/>
+				</IconTabFilter>
+				<IconTabFilter icon="sap-icon://hint" text="List Editable">
+					<core:Fragment fragmentName="bh/fragments/EditList" type="XML"/>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+	</Page>
+</mvc:View>

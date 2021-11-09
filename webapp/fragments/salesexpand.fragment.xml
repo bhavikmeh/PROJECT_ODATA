@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Table items="{ToSalesOrders}" growing="true" growingDirection="Downwards" growingThreshold="20" growingScrollToLoad="true"
+	       mode="SingleSelectMaster" selectionChange="onSaleSel">
+		<columns>
+			<Column>
+				<Text text="Sales Order"/>
+			</Column>
+			<Column>
+				<Text text="Gross Amount"/>
+			</Column>
+			<Column>
+				<Text text="Overall Status"/>
+			</Column>
+			<Column>
+				<Text text="Billing Status"/>
+			</Column>
+		</columns>
+		<items>
+			<core:Fragment fragmentName="bh/fragments/oSales" type="XML"/>
+		</items>
+	</Table>
+</core:FragmentDefinition>
